@@ -11,6 +11,17 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
+    <repositories>
+      <repository>
+        <id>MM-repository-release</id>
+        <url>http://www.mondometeo.org/mvn-repository/release</url>
+      </repository>
+      <repository>
+        <id>MM-repository-snapshot</id>
+        <url>http://www.mondometeo.org/mvn-repository/snapshot</url>
+      </repository>
+    </repositories>
+
   
   <groupId>org.mondometeo</groupId>
   <artifactId>MMCommon</artifactId>
