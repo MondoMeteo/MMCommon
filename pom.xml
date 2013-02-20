@@ -6,10 +6,11 @@
 	<!-- PARENT POM -->
 	<!-- ********************************************************** -->
         <parent>
-		<groupId>net.staniscia</groupId>
-		<artifactId>ast-parent-pom</artifactId>
-		<version>0.0.3-SNAPSHOT</version>
+		<groupId>org.mondometeo</groupId>
+		<artifactId>MMParentPom</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+
   
   <groupId>org.mondometeo</groupId>
   <artifactId>MMCommon</artifactId>
