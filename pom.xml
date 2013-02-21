@@ -2,27 +2,30 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
-  	<!-- ********************************************************** -->
-	<!-- PARENT POM -->
-	<!-- ********************************************************** -->
-        <parent>
-		<groupId>org.mondometeo</groupId>
-		<artifactId>MMParentPom</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-
-    <repositories>
-      <repository>
-        <id>MM-repository-release</id>
-        <url>http://www.mondometeo.org/mvn-repository/release</url>
-      </repository>
-      <repository>
-        <id>MM-repository-snapshot</id>
-        <url>http://www.mondometeo.org/mvn-repository/snapshot</url>
-      </repository>
-    </repositories>
-
+  <!-- ********************************************************** -->
+  <!-- PARENT POM -->
+  <!-- ********************************************************** -->
+  <parent>
+    <groupId>org.mondometeo</groupId>
+    <artifactId>MMParentPom</artifactId>
+    <version>0.1.0</version>
+  </parent>
   
+  <repositories>
+    <repository>
+      <id>MM-repository-release</id>
+      <url>http://www.mondometeo.org/mvn-repository/release</url>
+    </repository>
+    <repository>
+      <id>MM-repository-snapshot</id>
+      <url>http://www.mondometeo.org/mvn-repository/snapshot</url>
+    </repository>
+  </repositories>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+    
   <groupId>org.mondometeo</groupId>
   <artifactId>MMCommon</artifactId>
   <packaging>jar</packaging>
