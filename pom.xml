@@ -29,7 +29,7 @@
     <groupId>org.mondometeo</groupId>
     <artifactId>MMCommon</artifactId>
     <packaging>bundle</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>MMCommon</name>
     
     <scm>
