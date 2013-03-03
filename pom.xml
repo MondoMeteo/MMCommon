@@ -1,35 +1,49 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
   
-  <!-- ********************************************************** -->
-  <!-- PARENT POM -->
-  <!-- ********************************************************** -->
-  <parent>
-    <groupId>org.mondometeo</groupId>
-    <artifactId>MMParentPom</artifactId>
-    <version>0.1.0</version>
-  </parent>
+    <!-- ********************************************************** -->
+    <!-- PARENT POM -->
+    <!-- ********************************************************** -->
+    <parent>
+        <groupId>org.mondometeo</groupId>
+        <artifactId>MMParentPom</artifactId>
+        <version>0.1.0</version>
+    </parent>
   
-  <repositories>
-    <repository>
-      <id>MM-repository-release</id>
-      <url>http://www.mondometeo.org/mvn-repository/release</url>
-    </repository>
-    <repository>
-      <id>MM-repository-snapshot</id>
-      <url>http://www.mondometeo.org/mvn-repository/snapshot</url>
-    </repository>
-  </repositories>
+    <repositories>
+        <repository>
+            <id>MM-repository-release</id>
+            <url>http://www.mondometeo.org/mvn-repository/release</url>
+        </repository>
+        <repository>
+            <id>MM-repository-snapshot</id>
+            <url>http://www.mondometeo.org/mvn-repository/snapshot</url>
+        </repository>
+    </repositories>
   
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     
-  <groupId>org.mondometeo</groupId>
-  <artifactId>MMCommon</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>MMCommon</name>
+    <groupId>org.mondometeo</groupId>
+    <artifactId>MMCommon</artifactId>
+    <packaging>bundle</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>MMCommon</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>*</Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
   
 </project>
