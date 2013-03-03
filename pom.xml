@@ -35,7 +35,7 @@
     <scm>
         <url>http://github.com/jayway/maven-android-plugin-samples/tree/${scm.branch}</url>
         <connection>scm:git:git://github.com/MondoMeteo/MMCommon.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:MondoMeteo/MMCommon.git</developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com/MondoMeteo/MMCommon.git</developerConnection>
     </scm>
     <issueManagement>
         <system>GitHub Issue Tracking</system>
