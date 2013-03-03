@@ -24,13 +24,26 @@
   
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <scm.branch>master</scm.branch>
     </properties>
     
     <groupId>org.mondometeo</groupId>
     <artifactId>MMCommon</artifactId>
     <packaging>bundle</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>MMCommon</name>
+    
+    <scm>
+        <url>http://github.com/jayway/maven-android-plugin-samples/tree/${scm.branch}</url>
+        <connection>scm:git:git://github.com/MondoMeteo/MMCommon.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:MondoMeteo/MMCommon.git</developerConnection>
+    </scm>
+    <issueManagement>
+        <system>GitHub Issue Tracking</system>
+        <url>https://github.com/MondoMeteo/MMCommon/issues</url>
+    </issueManagement>
+    
+    
     <build>
         <plugins>
             <plugin>
