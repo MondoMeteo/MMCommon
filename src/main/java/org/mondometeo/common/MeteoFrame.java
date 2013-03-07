@@ -1,19 +1,19 @@
 /*  
-    Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
+ Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License, version 2, as
+ published by the Free Software Foundation.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 package org.mondometeo.common;
 
 import java.io.Serializable;
@@ -30,21 +30,26 @@ import org.mondometeo.common.elementary.MeteoData;
  * The Class MeteoFrame.
  */
 public class MeteoFrame implements Serializable {
-	
 
-	private static final long serialVersionUID = 2793381309080932805L;
-
-	/** Descriptions of frame. */
-	private String descriptions;
-
-    /** The date. */
+    private static final long serialVersionUID = 2793381309080932805L;
+    /**
+     * Descriptions of frame.
+     */
+    private String descriptions;
+    /**
+     * The date.
+     */
     private long date;
-    
-    /** The sector. */
+    /**
+     * The sector.
+     */
     private GeoSector sector;
-    
-    /** The meteo data. */
+    /**
+     * The meteo data.
+     */
     private ArrayList<MeteoData> meteoData = new ArrayList<MeteoData>();
+    private int nrows;
+    private int ncols;
 
     /**
      * Instantiates a new meteo frame.
@@ -52,12 +57,16 @@ public class MeteoFrame implements Serializable {
      * @param date the date
      * @param sector the sector
      */
-    public MeteoFrame(long date, GeoSector sector) {
-        this.date = date;
-        this.sector=sector;
+    public MeteoFrame(long timeOfFrame, GeoSector sector) {
+        this(timeOfFrame, sector, 0, 0);
     }
-    
-    
+
+    public MeteoFrame(long timeOfFrame, GeoSector sector, int nrows, int ncols) {
+        this.date = timeOfFrame;
+        this.sector = sector;
+        this.nrows = nrows;
+        this.ncols = ncols;
+    }
 
     /**
      * Gets the descriptions.
@@ -65,23 +74,19 @@ public class MeteoFrame implements Serializable {
      * @return the descriptions
      */
     public String getDescriptions() {
-		return descriptions;
-	}
+        return descriptions;
+    }
 
+    /**
+     * Sets the descriptions.
+     *
+     * @param descriptions the new descriptions
+     */
+    public void setDescriptions(String descriptions) {
+        this.descriptions = descriptions;
+    }
 
-
-	/**
-	 * Sets the descriptions.
-	 *
-	 * @param descriptions the new descriptions
-	 */
-	public void setDescriptions(String descriptions) {
-		this.descriptions = descriptions;
-	}
-
-
-
-	/**
+    /**
      * Gets the date.
      *
      * @return the date
@@ -89,7 +94,6 @@ public class MeteoFrame implements Serializable {
     public long getDate() {
         return date;
     }
-    
 
     /**
      * Sets the date.
@@ -99,8 +103,6 @@ public class MeteoFrame implements Serializable {
     public void setDate(long date) {
         this.date = date;
     }
-    
-    
 
     /**
      * Gets the sector.
@@ -108,24 +110,24 @@ public class MeteoFrame implements Serializable {
      * @return the sector
      */
     public GeoSector getSector() {
-		return sector;
-	}
+        return sector;
+    }
 
-	/**
-	 * Sets the sector.
-	 *
-	 * @param sector the new sector
-	 */
-	public void setSector(GeoSector sector) {
-		this.sector = sector;
-	}
+    /**
+     * Sets the sector.
+     *
+     * @param sector the new sector
+     */
+    public void setSector(GeoSector sector) {
+        this.sector = sector;
+    }
 
-	/**
-	 * List iterator.
-	 *
-	 * @param index the index
-	 * @return the list iterator
-	 */
+    /**
+     * List iterator.
+     *
+     * @param index the index
+     * @return the list iterator
+     */
     public ListIterator<MeteoData> listIterator(int index) {
         return meteoData.listIterator(index);
     }
@@ -157,13 +159,13 @@ public class MeteoFrame implements Serializable {
         return meteoData.size();
     }
 
-   /**
-    * Removes the.
-    *
-    * @param o the o
-    * @return true, if successful
-    */
-   public boolean remove(MeteoData o) {
+    /**
+     * Removes the.
+     *
+     * @param o the o
+     * @return true, if successful
+     */
+    public boolean remove(MeteoData o) {
         return meteoData.remove(o);
     }
 
@@ -234,5 +236,19 @@ public class MeteoFrame implements Serializable {
         return meteoData.add(e);
     }
 
-    
+    public int getNrows() {
+        return nrows;
+    }
+
+    public void setNrows(int nrows) {
+        this.nrows = nrows;
+    }
+
+    public int getNcols() {
+        return ncols;
+    }
+
+    public void setNcols(int ncols) {
+        this.ncols = ncols;
+    }
 }

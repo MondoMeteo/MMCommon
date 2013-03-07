@@ -1,19 +1,19 @@
 /*  
-    Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
+ Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License, version 2, as
+ published by the Free Software Foundation.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 package org.mondometeo.common.elementary;
 
 /**
@@ -21,25 +21,30 @@ package org.mondometeo.common.elementary;
  */
 public class MeteoData extends GeoPoint {
 
-
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 8111636829653557807L;
-
-	/** The Constant INVALID_VALUE. */
+    /**
+     * The Constant serialVersionUID.
+     */
+    private static final long serialVersionUID = 8111636829653557807L;
+    /**
+     * The Constant INVALID_VALUE.
+     */
     public static final float INVALID_VALUE = Float.NaN;
-    
-    /** The lst. */
+    /**
+     * The lst.
+     */
     private float lst;
-    
-    /** The rain. */
+    /**
+     * The rain.
+     */
     private float rain;
-    
-    /** The temp. */
+    /**
+     * The temp.
+     */
     private float temp;
-    
-    /** The cloud type. */
+    /**
+     * The cloud type.
+     */
     private int cloudType;
-
 
     /**
      * Instantiates a new meteo data.
@@ -66,10 +71,10 @@ public class MeteoData extends GeoPoint {
      */
     public MeteoData(final float latitude, final float longitude, final int elevation, final float lst, final float rain, final float temp, final int cloudType) {
         super(latitude, longitude, elevation);
-        this.lst = lst;
-        this.rain = rain;
-        this.temp = temp;
-        this.cloudType = cloudType;
+        this.lst = checkLandSurfaceTemperature(lst);
+        this.rain = checkRainRate(rain);
+        this.temp = checkAIT(temp);
+        this.cloudType = checkCloudType(cloudType);
     }
 
     /**
@@ -89,8 +94,6 @@ public class MeteoData extends GeoPoint {
     public void setCloudType(final int cloudType) {
         this.cloudType = cloudType;
     }
-
-
 
     /**
      * Gets the lst.
@@ -186,7 +189,52 @@ public class MeteoData extends GeoPoint {
         return hash;
     }
 
+    /**
+     * Max LST - Al-'Aziziyah, Libia Il 13 settembre 1922 la colonnina di
+     * mercurio raggiunse 57,8 °C Min LST - Presso la stazione russa di Vostok
+     * il 21 luglio 1983 viene registrata la temperatura esterna di -89,5° C
+     *
+     * @param lst
+     * @return
+     */
+    private float checkLandSurfaceTemperature(float lst) {
+        if (lst > 80f || lst < -150f) {
+            lst = INVALID_VALUE;
+        }
+        return lst;
+    }
 
+    /**
+     * MAX Foc-Foc, Isola di Réunion Tra il 7 e l'8 gennaio 1966 caddero 1828 mm di pioggia
+     * MIN 
+     * @param rain
+     * @return
+     */
+    private float checkRainRate(float rain) {
+        if (rain > 2000f || rain < 0f) {
+            rain = INVALID_VALUE;
+        }
+        return rain;
+    }
 
+    /**
+     * 
+     * @param temp
+     * @return 
+     */
+    private float checkAIT(float temp) {
+         if (temp > 2000f || temp < -2000f) {
+            temp = INVALID_VALUE;
+        }
+        return temp;
+    }
 
+    /**
+     * 
+     * @param cloudType
+     * @return 
+     */
+    private int checkCloudType(int cloudType) {
+        return cloudType;
+    }
 }
